@@ -1,6 +1,6 @@
 <template>
     <MainLayout>
-        <div class="text-5xl">Welcome</div>
+        <div class="text-5xl">New Article</div>
     </MainLayout>
 </template>
 

@@ -24,6 +24,20 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/newarticle', function () {
+    return Inertia::render('NewArticle', []);
+});
+Route::get('/impressum', function () {
+    return Inertia::render('Impressum', []);
+});
+Route::get('/articleslisting', function () {
+    return Inertia::render('ArticlesListing', []);
+});
+Route::get('/articledetails', function () {
+    return Inertia::render('ArticleDetails', []);
+});
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
