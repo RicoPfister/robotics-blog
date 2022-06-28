@@ -13,9 +13,13 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js').vue()
     .sass('resources/sass/app.scss', 'public/css')
-    .postCss('resources/css/app.css', 'public/css', [
-        require('tailwindcss'),
-    ])
+    .options({
+        postCss: [
+            require('postcss-import'),
+            require('tailwindcss'),
+            require('postcss-nested')
+        ]
+    })
     .alias({
         '@': 'resources/js',
         ziggy: "vendor/tightenco/ziggy/dist/vue",
