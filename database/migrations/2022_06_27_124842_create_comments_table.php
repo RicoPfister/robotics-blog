@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('text');
-            // $table->foreign('article_id')->references('id')->on('articles');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            // $table->foreignId('user_id')->constrained();
+            $table->bigInteger('article_id')->unsigned();
+            $table->foreign('article_id')->references('id')->on('articles');
             $table->timestamps();
         });
     }
