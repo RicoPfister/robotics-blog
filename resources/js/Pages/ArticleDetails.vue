@@ -82,13 +82,21 @@
                 <p>LEAVE A COMMENT</p>
         </div>
 
-         <div class="mx-auto text-center">
-                <textarea class="shadow rounded stroke-[2px]" rows="7" cols="40" name="write here" placeholder="write here"> </textarea>
-        </div>
+        <form method="" action="">
 
-        <div class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
-            SUBMIT
-        </div>
+
+            <div class="mx-auto text-center">
+                <textarea class="shadow rounded stroke-[2px]" rows="7" cols="40" name="write here" placeholder="write here"> </textarea>
+            </div>
+
+
+           <button class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
+                  SUBMIT
+            </button>
+
+        </form>
+
+
 
         <div class="mx-auto text-center font-bold m-5">
                 <p>COMMENTS</p>
