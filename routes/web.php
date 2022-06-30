@@ -36,6 +36,9 @@ Route::get('/articleslisting', function () {
 Route::get('/articledetails', function () {
     return Inertia::render('ArticleDetails', []);
 });
+Route::get('/termsofservice', function () {
+    return Inertia::render('TermsOfService', []);
+});
 
 
 Route::middleware([
