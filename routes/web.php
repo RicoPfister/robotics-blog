@@ -3,6 +3,8 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,10 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::resource('articles', ArticlesController::class);
+Route::resource('articles.comments', CommentsController::class);
+// Route::resource('articles.likes', LikesController::class);
 
 Route::get('/newarticle', function () {
     return Inertia::render('NewArticle', []);
