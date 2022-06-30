@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col h-screen">
-        <div class="flex flex-col justify-end h-36 bg-slate-600">
+        <div class="flex flex-col justify-end h-36 bg-[#ffffff]">
             <div v-if="showRegLog()" class="absolute top-3 right-3 flex">
                 <div v-if="loggedIn()" class="flex gap-5">
                     <JetDropdown align="right" width="48">
@@ -37,33 +37,39 @@
                         </template>
                     </JetDropdown>
                 </div>
+
+
+
                 <div v-else class="flex">
                     <Link
                         :href="route('register')"
-                        class="bg-orange-register rounded-lg w-28 m-2 p-2 px-5 hover:bg-orange-200"
+                        class="bg-orange-register rounded-lg w-28 mt-5 pt-8"
                     >
                         Register
                     </Link>
                     <Link
                         :href="route('login')"
-                        class="bg-yellow rounded-lg w-28 m-2 p-2 px-5 hover:bg-yellow-200"
+                        class="bg-yellow-login rounded-lg w-28 mt-5 pt-8"
                     >
                         Log-in
                     </Link>
                 </div>
             </div>
-            <nav class="flex justify-between text-white bg-violet-500">
-                <Link href="/">home</Link>
-                <Link href="/articleslisting">entertainment</Link>
-                <Link href="/articleslisting">robots</Link>
-                <Link href="/articleslisting">industry</Link>
+            <nav class=" flex justify-evenly p-10 text-white mb-5 h-24 bg-[#5fc6d8]">
+                <Link href="/">HOME</Link>
+                <Link href="/articleslisting">ENTERTAINMENT</Link>
+                <Link href="/articleslisting">ROBOTS</Link>
+                <Link href="/articleslisting">INDUSRTY</Link>
             </nav>
         </div>
+
         <slot></slot>
-        <div class="h-24 bg-slate-600 mt-auto text-white flex justify-between">
-            <Link :href="route('terms.show')">ToS</Link>
-            <Link :href="route('policy.show')">Privacy Policy</Link>
-            <Link href="/impressum">Impressum</Link>
+
+
+        <div class=" flex justify-evenly p-5 mt-8 h-24 bg-[#b79fff] text-white">
+            <Link :href="route('terms.show')">TERMS OF SERVICES</Link>
+            <Link :href="route('policy.show')">PRIVACY POLICY</Link>
+            <Link href="/impressum">IMPRESSUM</Link>
         </div>
     </div>
 </template>
