@@ -89,7 +89,7 @@
             </div>
 
 
-           <button @click="createCommentForm.post(`articles/${article.id}/comments`, {})" class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
+           <button @click="createCommentForm.post(`/articles/${article.id}/comments`, {})" class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
                   SUBMIT
             </button>
 
@@ -125,9 +125,7 @@ import { ref } from 'vue';
 
 const comment = ref('');
 const createCommentForm = useForm({ 'content': comment });
-// use some placeholder article till the backend provides one
-// const article = computed(() => usePage().props.value.article);
-const article = { id : 1, title : "article title" , short: "short of article", content : " some demo content"};
+const article = computed(() => usePage().props.value.article);
 </script>
 
 <style>
