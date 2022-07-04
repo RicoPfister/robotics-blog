@@ -82,19 +82,16 @@
                 <p>LEAVE A COMMENT</p>
         </div>
 
-        <form method="" action="">
 
 
             <div class="mx-auto text-center">
-                <textarea class="shadow rounded stroke-[2px]" rows="7" cols="40" name="write here" placeholder="write here"> </textarea>
+                <textarea v-model="comment" class="shadow rounded stroke-[2px]" rows="7" cols="40" name="write here" placeholder="write here"> </textarea>
             </div>
 
 
-           <button class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
+           <button @click="createCommentForm.post(`articles/${article.id}/comments`, {})" class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
                   SUBMIT
             </button>
-
-        </form>
 
 
 
@@ -121,6 +118,16 @@
 import MainLayout from "@/Layouts/MainLayout.vue";
 import MyImage from "@/../images/botblog-logo-2.png";
 import MyLike from "@/../images/like.png";
+
+import { useForm, usePage } from "@inertiajs/inertia-vue3";
+import { computed } from "@vue/reactivity";
+import { ref } from 'vue';
+
+const comment = ref('');
+const createCommentForm = useForm({ 'content': comment });
+// use some placeholder article till the backend provides one
+// const article = computed(() => usePage().props.value.article);
+const article = { id : 1, title : "article title" , short: "short of article", content : " some demo content"};
 </script>
 
 <style>
