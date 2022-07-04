@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Models\Article;
 
 class ArticlesController extends Controller
 {
@@ -43,9 +45,11 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        return Inertia::render('ArticleDetails', [
+            'article' => $article
+        ]);
     }
 
     /**
