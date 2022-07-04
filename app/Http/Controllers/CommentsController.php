@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Models\Comment;
+use App\Models\Article;
+use Redirect;
+use Auth;
+use Illuminate\Support\Facades\Log;
 
 class CommentsController extends Controller
 {
@@ -32,9 +38,19 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request, $article_id) {
+
+        $request->validate([
+        'content' => 'required',
+        ]);
+
+        $comment = new Comment();
+        $comment->text = $request->content;
+        $comment->user_id = Auth::user()->id;
+        $comment->article_id = $article_id;
+        $comment->save();
+
+        return Redirect::route('articles.show', $article_id);
     }
 
     /**

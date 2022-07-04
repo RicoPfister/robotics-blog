@@ -85,7 +85,7 @@
 
 
             <div class="mx-auto text-center">
-                <textarea v-model="comment" class="shadow rounded stroke-[2px]" rows="7" cols="40" name="write here" placeholder="write here"> </textarea>
+                <textarea v-model="comment" class="shadow rounded stroke-[2px]" rows="7" cols="40" name="content" placeholder="write here"> </textarea>
             </div>
 
 
