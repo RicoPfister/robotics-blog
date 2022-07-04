@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Comment;
+use App\Models\Article;
+use Redirect;
+use Auth;
+use Illuminate\Support\Facades\Log;
 
 class CommentsController extends Controller
 {
@@ -34,26 +38,19 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request, $article_id) {
 
         $request->validate([
         'content' => 'required',
-        // 'captcha' => 'in:1234'
         ]);
 
-        // we create a new Message-Object
         $comment = new Comment();
-        // we set the properties title and content
-        // with the values that we got in the post-request
-        // $comment->text = $request->context;
         $comment->text = $request->content;
-        // $comment->id = Auth::user()->id;
-        $comment->user_id = Auth::user->id;
-        $comment->article_id =
-
+        $comment->user_id = Auth::user()->id;
+        $comment->article_id = $article_id;
         $comment->save();
 
-        return Inertia::render('ArticleDetails', []);
+        return Redirect::route('articles.show', $article_id);
     }
 
     /**
