@@ -25,6 +25,7 @@
                 <div class="max-w-2xl rounded-lg shadow-xl bg-gray-50">
 
                     <div class="m-4">
+                        <input type="file" name="image">
                         <label class="inline-block mb-2 text-gray-500">Img Upload</label>
                         <div class="flex items-center justify-center w-full">
                             <label
@@ -50,9 +51,6 @@
                     </div>
                 </div>
             </div>
-
-
-
         </form>
     </MainLayout>
 </template>

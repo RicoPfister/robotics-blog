@@ -41,11 +41,12 @@ class ArticlesController extends Controller
     public function store(Request $request, $article_id)
     {
         $article = new Article();
-        $article->user_id = 1;  // TODO
+        $article->user_id = Auth::user()->id;
         $article->title = $request->title;
         $article->short = $request->short;
         $article->content = $request->content;
         $article->filename_image = 'img_article_' . $article_id . '.png';
+        Storage::put($article->filename_image, $request->file('image'));
         $article->save();
 
         return Redirect::route('articles.index');
