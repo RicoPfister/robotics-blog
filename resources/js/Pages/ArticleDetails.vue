@@ -86,9 +86,19 @@
             </textarea>
         </div>
 
+
+            <div class="mx-auto text-center">
+                <textarea v-model="comment" class="shadow rounded stroke-[2px]" rows="7" cols="40" name="content" placeholder="write here"> </textarea>
+
+                <!-- show validation warning -->
+                <div class="text-red-600" v-if="$page.props.errors.content">Please enter a comment</div>
+            </div>
+
            <button @click="createCommentForm.post(`/articles/${article.id}/comments`, {})" class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
                   SUBMIT
             </button>
+
+
 
         <div class="mx-auto text-center font-bold m-5">
             <p>COMMENTS</p>
@@ -142,7 +152,7 @@ import { useForm, usePage } from "@inertiajs/inertia-vue3";
 import { computed } from "@vue/reactivity";
 import { ref } from "vue";
 
-
+const comment = ref('');
+const createCommentForm = useForm({ 'content': comment });
+const article = computed(() => usePage().props.value.article);
 </script>
-
-<style></style>

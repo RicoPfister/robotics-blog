@@ -1,4 +1,5 @@
 <template>
+    <JetBanner />
     <div class="flex flex-col h-screen">
         <div class="flex flex-col justify-end h-36 bg-slate-600">
             <div v-if="showRegLog()" class="absolute top-3 right-3 flex">
@@ -59,6 +60,9 @@
                 <Link href="/articleslisting">industry</Link>
             </nav>
         </div>
+
+
+
         <slot></slot>
         <div class="h-24 bg-slate-600 mt-auto text-white flex justify-between">
             <Link :href="route('terms.show')">ToS</Link>
@@ -73,6 +77,7 @@ import { Link, usePage } from "@inertiajs/inertia-vue3";
 import JetDropdownLink from "@/Jetstream/DropdownLink.vue";
 import JetDropdown from "@/Jetstream/Dropdown.vue";
 import { Inertia } from "@inertiajs/inertia";
+import JetBanner from '@/Jetstream/Banner.vue';
 
 const logout = () => {
     Inertia.post(route("logout"));
