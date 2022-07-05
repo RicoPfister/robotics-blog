@@ -50,6 +50,9 @@ class CommentsController extends Controller
         $comment->article_id = $article_id;
         $comment->save();
 
+        session()->flash('flash.banner', 'Your comment has been successfully sent.');
+        session()->flash('flash.bannerStyle', 'success');
+
         return Redirect::route('articles.show', $article_id);
     }
 

@@ -89,9 +89,10 @@
 
             <div class="mx-auto text-center">
                 <textarea v-model="comment" class="shadow rounded stroke-[2px]" rows="7" cols="40" name="content" placeholder="write here"> </textarea>
-                <div class="text-red-600" v-if="$page.props.errors.content">Please enter a comment</div>
-           </div>
 
+                <!-- show validation warning -->
+                <div class="text-red-600" v-if="$page.props.errors.content">Please enter a comment</div>
+            </div>
 
            <button @click="createCommentForm.post(`/articles/${article.id}/comments`, {})" class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
                   SUBMIT
