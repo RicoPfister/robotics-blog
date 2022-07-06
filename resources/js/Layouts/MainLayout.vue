@@ -1,4 +1,5 @@
 <template>
+    <JetBanner />
     <div class="flex flex-col h-screen">
         <div class="flex flex-col justify-end h-96 bg-[#ffffff]">
             <div v-if="showRegLog()" class="absolute top-1 right-1 flex">
@@ -72,6 +73,7 @@
 
         </div>
 
+
         <slot></slot>
 
 <!-- sm:flex sm:items-center sm:justify-between -->
@@ -95,6 +97,7 @@ import { Inertia } from "@inertiajs/inertia";
 import MyLogo from "@/../images/botblog-logo-1.png";
 import MyLogo2 from "@/../images/botblog-logo-2.png";
 
+import JetBanner from '@/Jetstream/Banner.vue';
 
 const logout = () => {
     Inertia.post(route("logout"));

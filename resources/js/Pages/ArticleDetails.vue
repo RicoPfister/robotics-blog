@@ -1,111 +1,144 @@
 <template>
-
     <MainLayout>
-         <!-- <nav class="navbar">
-            <p class="nav-options">HOME</p>
-            <p class="nav-options">ENTERNTAIMENT</p>
-            <p class="nav-options">ROBOTS</p>
-            <p class="nav-options">INDUSTRY</p>
-            <p class="nav-options">PROFILE</p>
-        </nav> -->
-        <div class="mx-auto text-center font-bold text-purple-500 text-3xl">
-                <p>TITLE OF THE ARTICLE</p>
+        <!-- HERE US WHERE WE CALL THE TITLE OF THE ARTICLE -->
+        <div class="container mx-auto text-center font-bold text-white text-3xl p-2 bg-slate-500">
+            <p>TITLE OF THE ARTICLE</p>
         </div>
-        <div class="container mx-auto columns-2">
 
-            <div class="child-img-cont ">
-                <img :src="MyImage">
+        <!-- HERE IS WHERE THE ARTICLES IMAGE IS CALLED -->
+        <div class="container mx-auto ">
+            <img :src="MyGirlRobot" />
+        </div>
 
-            </div>
+        <!-- HERE IS WERE THE ARTICLES TEXT IS CALLED -->
+        <div class="container mx-auto first-letter:text-7xl first-line:uppercase first-letter:font-bold text-left text-white bg-slate-500 " >
+            <div>
+                    Here our users are going to be able to read and enjoy the
+                    complete article, but not only that. The ones who are
+                    already registered are going to be able to leave their
+                    thoughts about the article itself and of course interact
+                    with other users part o our special community.The more you
+                    participate, the more friends you will make. People who
+                    shares your likes and who also love this amazing Robotics
+                    and Technology. What are you waiting for? Do not lose the
+                    chance to be part of something special and Sign Up Now!!!
+                    Here our users are going to be able to read and enjoy the
+                    complete article, but not only that. The ones who are
+                    already registered are going to be able to leave their
+                    thoughts about the article itself and of course interact
+                    with other users part o our special community.The more you
+                    participate, the more friends you will make. People who
+                    shares your likes and who also love this amazing Robotics
+                    and Technology. What are you waiting for? Do not lose the
+                    chance to be part of something special and Sign Up Now!!!
 
-            <div class="child-txt-cont first-letter:text-7xl first-line:uppercase first-letter:font-bold">
-                <p>Here our users are going to be able to read and enjoy the complete
-                    article, but not only that. The ones who are already registered are going
-                    to be able to leave their thoughts about the article itself and of course
-                    interact with other users part o our special community.The more you
-                    participate, the more friends you will make. People who shares your likes
-                    and who also love this amazing Robotics and Technology.
 
-                    What are you waiting for? Do not lose the chance to be part of something
-                    special and Sign Up Now!!!
-
-                    Here our users are going to be able to read and enjoy the complete
-                    article, but not only that. The ones who are already registered are going
-                    to be able to leave their thoughts about the article itself and of course
-                    interact with other users part o our special community.The more you
-                    participate, the more friends you will make. People who shares your likes
-                    and who also love this amazing Robotics and Technology.
-
-                    What are you waiting for? Do not lose the chance to be part of something
-                    special and Sign Up Now!!!
-
-                    </p>
-                <div class="mx-auto text-center font-bold text-black text-1xl">
+                <!-- HERE IS WERE THE ARTICLES DATE AND WRITER IS CALLED OR WRITTEN  -->
+                <div class="mx-auto text-center font-bold text-white text-1xl bg-sky-400">
                     Date of the Article + Plus Writer's name
                 </div>
 
             </div>
 
         </div>
+        <!-- HERE IS WERE PEOPLE CAN LIKE OR DISLIKE THE ARTICLE -->
+        <div class="columns-2 text-center content-start rounded  mx-auto p-3 m-5 bg-sky-400" >
 
-        <div class="columns-3 text-center p-3 content-start">
+            <div class="font-bold text-center text-white ">
+                169
+                <button
+                    class="text-center font-bold bg-sky-700 rounded mx-auto p-2 g-sky-600 hover:bg-sky-900 text-white">
 
-            <div class=" text-center font-bold ">
-                <p>DID YOU LIKE THE ARTICLE?</p>
+
+                    &#128077;
+
+                </button>
             </div>
 
-            <div class="font-bold text-center text-purple-500">
-                169 LIKES
-                <button class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
-                    LIKE
+            <div class="font-bold text-center text-white ">
+
+                68
+                <button
+                    class="text-center font-bold bg-sky-700 rounded mx-auto p-2 g-sky-600 hover:bg-sky-900 text-white">
+
+                    &#128078;
+
                 </button>
 
+            </div>
+        </div>
 
+
+        <div class="mx-auto text-center font-bold p-2">
+            <p>LEAVE A COMMENT</p>
+        </div>
+
+        <!-- HERE IS WERE REGISTERED USERS CAN LEAVE AND SUBMIT THEIR COMMENTS-->
+        <div class="mx-auto text-center">
+            <textarea
+                v-model="comment"
+                class="shadow rounded stroke-[2px] overflow-x-scroll"
+                rows="7"
+                cols="35"
+                name="write here"
+                placeholder="write here"
+            >
+            </textarea>
+        </div>
+
+
+            <div class="mx-auto text-center">
+                <textarea v-model="comment" class="shadow rounded stroke-[2px]" rows="7" cols="40" name="content" placeholder="write here"> </textarea>
+
+                <!-- show validation warning -->
+                <div class="text-red-600" v-if="$page.props.errors.content">Please enter a comment</div>
             </div>
 
-            <div class="font-bold text-center text-purple-500">
-                68 DISLIKES
-
-                <button class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
-                  DISLIKE
-                </button>
-
-            </div>
+           <button @click="createCommentForm.post(`/articles/${article.id}/comments`, {})" class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
+                  SUBMIT
+            </button>
 
 
-
-        </div>
-
-
-
-        <div class="mx-auto text-center font-bold">
-                <p>LEAVE A COMMENT</p>
-        </div>
-
-         <div class="mx-auto text-center">
-                <textarea class="shadow rounded stroke-[2px]" rows="7" cols="40" name="write here" placeholder="write here"> </textarea>
-        </div>
-
-        <div class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
-            SUBMIT
-        </div>
 
         <div class="mx-auto text-center font-bold m-5">
-                <p>COMMENTS</p>
+            <p>COMMENTS</p>
         </div>
 
-         <div class="mx-auto text-center">
-                <div class="text-center border-2 p-2 border-gray-300 rounded shadow-lg m-5" rows="4" cols="50" name="write here" placeholder="write here">
-                  I think this is absolutely amazing I never knew that my cat could be inside the Matrix as a Djavu
-                    </div>
-         </div>
+        <!-- HERE IS WERE COMMENTS ARE POST SO PEOPLE CAN READ THEM-->
 
-         <div class="mx-auto text-center">
-                <div class="text-center border-2 p-2 border-gray-300 rounded shadow-lg m-5" rows="4" cols="50" name="write here" placeholder="write here">
-                  Vamonos!!! I do really want my cyber cat also, but, is it possible to accquire one in United Stares?
-                    </div>
-         </div>
+        <div class="container text-center p-2 rounded mx-auto display" >
+            <div class="text-center">
+                <div
+                    class="text-center p-2 rounded drop-shadow-xl m-3  bg-sky-400 text-white inline-flex">
+                    I think this is absolutely amazing I did not know that my cat
+                    could be inside the Matrix as a Djavu. But yes, believe me, If I were Neo
+                    I would not leave alone Trinity.
 
+                     I think this is absolutely amazing I did not know that my cat
+                    could be inside the Matrix as a Djavu. But yes, believe me, If I were Neo
+                    I would not leave alone Trinity.
+
+                </div>
+
+
+            </div>
+
+            <div class="text-center">
+                <div
+                    class="text-center p-2 rounded drop-shadow-xl m-3  bg-sky-400 text-white inline-flex">
+                    Vamonos!!! I do really want my cyber cat also, but, is it
+                    possible to accquire one in United Stares?
+                </div>
+            </div>
+
+            <div class="text-center">
+                <div
+                    class="text-center p-2 rounded drop-shadow-xl m-3  bg-sky-400 text-white inline-flex ">
+
+                    This is something I need to discuse with my parrot :/
+                </div>
+            </div>
+        </div>
     </MainLayout>
 </template>
 
@@ -113,9 +146,13 @@
 import MainLayout from "@/Layouts/MainLayout.vue";
 import MyImage from "@/../images/botblog-logo-2.png";
 import MyLike from "@/../images/like.png";
+import MyGirlRobot from "@/../images/robot-girl-image.jpg";
+
+import { useForm, usePage } from "@inertiajs/inertia-vue3";
+import { computed } from "@vue/reactivity";
+import { ref } from "vue";
+
+const comment = ref('');
+const createCommentForm = useForm({ 'content': comment });
+const article = computed(() => usePage().props.value.article);
 </script>
-
-<style>
-
-
-</style>

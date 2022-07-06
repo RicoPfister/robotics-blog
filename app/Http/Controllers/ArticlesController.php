@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Models\Article;
+use Redirect;
 
 class ArticlesController extends Controller
 {
@@ -13,17 +16,20 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('ArticlesListing', []);
     }
 
+    public function saveFileToDisc($name, $blob) {
+
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return Inertia::render('NewArticle', []);
     }
 
     /**
@@ -32,9 +38,18 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $article_id)
     {
-        //
+        $article = new Article();
+        $article->user_id = Auth::user()->id;
+        $article->title = $request->title;
+        $article->short = $request->short;
+        $article->content = $request->content;
+        $article->filename_image = 'img_article_' . $article_id . '.png';
+        Storage::put($article->filename_image, $request->file('image'));
+        $article->save();
+
+        return Redirect::route('articles.index');
     }
 
     /**
@@ -43,9 +58,11 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        return Inertia::render('ArticleDetails', [
+            'article' => $article
+        ]);
     }
 
     /**
