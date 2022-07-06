@@ -63,7 +63,7 @@
             <nav class=" flex justify-evenly p-10 text-white mt-[10px] h-24 bg-[#5fc6d8]">
                 <Link href="/">HOME</Link>
                 <Link :href="route('articles.index', {category : 'entertainment'})">ENTERTAINMENT</Link>
-                <Link :href="route('articles.index', {category : 'robots'})">ROBOTS</Link>
+                <Link :href="route('articles.index', {category : 'robotics'})">ROBOTICS</Link>
                 <Link :href="route('articles.index', {category : 'industry'})">INDUSRTY</Link>
                 <Link :href="route('articles.index', {category : 'medical'})">MEDICAL</Link>
            </nav>

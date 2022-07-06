@@ -1,51 +1,36 @@
 <template>
     <div class="flex">
-
-        <div v-if="imageLeft" class="flex items-center mx-auto ingoMOD">
-            <div class=" font-bold text-purple-500 text-3xl text-center">
-                ARTICLE TITLE
-                <img :src="MyGirlRobot" class="scale-75 rounded-full"/>
+        <div v-if="imageLeft" class="flex items-center mx-auto flex-col md:flex-row">
+            <div class="flex flex-col item-center font-bold text-purple-500 text-3xl text-center">
+                <Link :href="route('articles.show', article.id)">{{ article.title }}</Link>
+                <img src="/images/robot-girl-image.jpg" class="scale-75 rounded-full"/>
             </div>
             <div class="py-4">
-                This is a little description about the article, this might be
-                written in a excel table with all the other details together.
-                What are you waiting for? Do not lose the chance to be part of
-                something special and Sign Up Now!!! This is a little
-                description about the article, this might be written in a excel
-                table with all the other details together. What are you waiting
-                for? Do not lose the chance to be part of something special and
-                Sign Up Now!!!
+                {{ article.content }}
             </div>
         </div>
-        <div v-else class="flex items-center mx-auto ingoMOD">
-            <div class="py-4">
-                This is a little description about the article, this might be
-                written in a excel table with all the other details together.
-                What are you waiting for? Do not lose the chance to be part of
-                something special and Sign Up Now!!! This is a little
-                description about the article, this might be written in a excel
-                table with all the other details together. What are you waiting
-                for? Do not lose the chance to be part of something special and
-                Sign Up Now!!!
+        <div v-else class="flex items-center mx-auto flex-col md:flex-row">
+            <div class="block md:hidden font-bold text-purple-500 text-3xl text-center">
+                <Link :href="route('articles.show', article.id)">{{ article.title }}</Link>
+                <img src="/images/robot-girl-image.jpg" class="scale-75 rounded-full" />
             </div>
 
-            <div class="flex flex-col item-center font-bold text-purple-500 text-3xl text-center">
-                ARTICLE TITLE
-                <img :src="MyGirlRobot" class="scale-75 rounded-full" />
+            <div class="py-4">
+                {{ article.content }}
+            </div>
 
+            <div class="hidden md:block font-bold text-purple-500 text-3xl text-center">
+                <Link :href="route('articles.show', article.id)">{{ article.title }}</Link>
+                <img src="/images/robot-girl-image.jpg" class="scale-75 rounded-full" />
             </div>
         </div>
     </div>
 </template>
 
-
-</style>
-
 <script setup>
 import { Link, usePage } from "@inertiajs/inertia-vue3";
 import MyImage from "@/../images/botblog-logo-2.png";
-import MyGirlRobot from "@/../images/robot-girl-image.jpg";
-
+import { computed } from "@vue/reactivity";
 
 const props = defineProps({
     article: Object,
