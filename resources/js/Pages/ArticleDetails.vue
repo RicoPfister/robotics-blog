@@ -2,40 +2,24 @@
     <MainLayout>
         <!-- HERE US WHERE WE CALL THE TITLE OF THE ARTICLE -->
         <div class="container mx-auto text-center font-bold text-white text-3xl p-2 bg-slate-500">
-            <p>TITLE OF THE ARTICLE</p>
+            <p>{{ article.title }}</p>
         </div>
 
         <!-- HERE IS WHERE THE ARTICLES IMAGE IS CALLED -->
-        <div class="container mx-auto ">
-            <img :src="MyGirlRobot" />
+        <div class="container mx-auto flex justify-center">
+            <!-- <img :src="article.filename_image" /> -->
+            <img v-if="article.filename_image != null" :src="'/images/'+article.filename_image"/>
+            <img v-else src="/images/default.webp" />
+
         </div>
 
         <!-- HERE IS WERE THE ARTICLES TEXT IS CALLED -->
         <div class="container mx-auto first-letter:text-7xl first-line:uppercase first-letter:font-bold text-left text-white bg-slate-500 " >
             <div>
-                    Here our users are going to be able to read and enjoy the
-                    complete article, but not only that. The ones who are
-                    already registered are going to be able to leave their
-                    thoughts about the article itself and of course interact
-                    with other users part o our special community.The more you
-                    participate, the more friends you will make. People who
-                    shares your likes and who also love this amazing Robotics
-                    and Technology. What are you waiting for? Do not lose the
-                    chance to be part of something special and Sign Up Now!!!
-                    Here our users are going to be able to read and enjoy the
-                    complete article, but not only that. The ones who are
-                    already registered are going to be able to leave their
-                    thoughts about the article itself and of course interact
-                    with other users part o our special community.The more you
-                    participate, the more friends you will make. People who
-                    shares your likes and who also love this amazing Robotics
-                    and Technology. What are you waiting for? Do not lose the
-                    chance to be part of something special and Sign Up Now!!!
-
-
+                {{ article.content }}
                 <!-- HERE IS WERE THE ARTICLES DATE AND WRITER IS CALLED OR WRITTEN  -->
                 <div class="mx-auto text-center font-bold text-white text-1xl bg-sky-400">
-                    Date of the Article + Plus Writer's name
+                    {{ article.created_at_human }} | Created by {{ article.author }}
                 </div>
 
             </div>
@@ -74,21 +58,18 @@
         </div>
 
         <!-- HERE IS WERE REGISTERED USERS CAN LEAVE AND SUBMIT THEIR COMMENTS-->
-        <div class="mx-auto text-center">
-            <textarea
-                v-model="comment"
-                class="shadow rounded stroke-[2px] overflow-x-scroll"
-                rows="7"
-                cols="35"
-                name="write here"
-                placeholder="write here"
-            >
-            </textarea>
-        </div>
+            <div class="mx-auto text-center">
+                <textarea v-model="comment" class="shadow rounded stroke-[2px]" rows="7" cols="40" name="content" placeholder="write here"> </textarea>
+
+                <!-- show validation warning -->
+                <div class="text-red-600" v-if="$page.props.errors.content">Please enter a comment</div>
+            </div>
 
            <button @click="createCommentForm.post(`/articles/${article.id}/comments`, {})" class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
                   SUBMIT
             </button>
+
+
 
         <div class="mx-auto text-center font-bold m-5">
             <p>COMMENTS</p>
@@ -142,7 +123,7 @@ import { useForm, usePage } from "@inertiajs/inertia-vue3";
 import { computed } from "@vue/reactivity";
 import { ref } from "vue";
 
-
+const comment = ref('');
+const createCommentForm = useForm({ 'content': comment });
+const article = computed(() => usePage().props.value.article);
 </script>
-
-<style></style>

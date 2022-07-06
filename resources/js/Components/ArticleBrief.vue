@@ -1,5 +1,6 @@
 <template>
     <div class="flex">
+
         <div v-if="imageLeft" class="flex items-center mx-auto ingoMOD">
             <div class=" font-bold text-purple-500 text-3xl text-center">
                 ARTICLE TITLE
@@ -31,6 +32,7 @@
             <div class="flex flex-col item-center font-bold text-purple-500 text-3xl text-center">
                 ARTICLE TITLE
                 <img :src="MyGirlRobot" class="scale-75 rounded-full" />
+
             </div>
         </div>
     </div>
@@ -40,10 +42,16 @@
 </style>
 
 <script setup>
+import { Link, usePage } from "@inertiajs/inertia-vue3";
 import MyImage from "@/../images/botblog-logo-2.png";
 import MyGirlRobot from "@/../images/robot-girl-image.jpg";
 
-defineProps({
-    imageLeft: Boolean,
+
+const props = defineProps({
+    article: Object,
+    index: Number
 });
+
+const imageLeft = computed(() => {return props.index%2===0});
+
 </script>

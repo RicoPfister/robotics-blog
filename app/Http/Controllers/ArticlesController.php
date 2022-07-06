@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Article;
+use App\Models\User;
 use Redirect;
+use Auth;
 
 class ArticlesController extends Controller
 {
@@ -16,7 +18,9 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        return Inertia::render('ArticlesListing', []);
+        $articles = Article::all()->where('category', '=' ,request()->category)->values();
+
+        return Inertia::render('ArticlesListing', ['articles' => $articles]);
     }
 
     public function saveFileToDisc($name, $blob) {
@@ -60,9 +64,9 @@ class ArticlesController extends Controller
      */
     public function show(Article $article)
     {
-        return Inertia::render('ArticleDetails', [
-            'article' => $article
-        ]);
+        $article->author = User::all()->where('id', '=', $article->user_id)->pluck('name')->first();
+        $article->created_at_human = $article->created_at->diffForHumans();
+        return Inertia::render('ArticleDetails', ['article' => $article]);
     }
 
     /**

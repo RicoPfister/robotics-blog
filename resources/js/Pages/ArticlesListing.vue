@@ -4,6 +4,7 @@
         <div class="container mx-auto ">
             <div class="container mx-auto text-center font-bold text-black text-3xl p-4">
                 CATEGORY/SECTION NAME
+
             </div>
 
             <div class="flex items-center mx-auto ingoMOD">
@@ -66,6 +67,7 @@
                 </div>
             </div>
 
+
         </div>
 
     </MainLayout>
@@ -92,5 +94,7 @@ import MainLayout from "@/Layouts/MainLayout.vue";
 import MyImage from "@/../images/botblog-logo-2.png";
 import MyLike from "@/../images/like.png";
 import ArticleBrief from "../Components/ArticleBrief.vue";
+
 import MyGirlRobot from "@/../images/robot-girl-image.jpg";
+
 </script>
