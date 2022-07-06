@@ -39,13 +39,10 @@ Route::get('/impressum', function () {
 Route::get('/articleslisting', function () {
     return Inertia::render('ArticlesListing', []);
 });
-Route::get('/articledetails', function () {
-    return Inertia::render('ArticleDetails', []);
-});
+
 Route::get('/termsofservice', function () {
     return Inertia::render('TermsOfService', []);
 });
-
 
 Route::middleware([
     'auth:sanctum',

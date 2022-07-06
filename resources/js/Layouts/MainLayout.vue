@@ -55,13 +55,12 @@
             </div>
             <nav class="flex justify-between text-white bg-violet-500">
                 <Link href="/">home</Link>
-                <Link href="/articleslisting">entertainment</Link>
-                <Link href="/articleslisting">robots</Link>
-                <Link href="/articleslisting">industry</Link>
-            </nav>
+                <Link :href="route('articles.index', {category : 'entertainment'})">entertainment</Link>
+                <Link :href="route('articles.index', {category : 'robotics'})">robotics</Link>
+                <Link :href="route('articles.index', {category : 'industry'})">industry</Link>
+                <Link :href="route('articles.index', {category : 'medical'})">medical</Link>
+           </nav>
         </div>
-
-
 
         <slot></slot>
         <div class="h-24 bg-slate-600 mt-auto text-white flex justify-between">
