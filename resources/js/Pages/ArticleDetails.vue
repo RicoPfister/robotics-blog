@@ -1,102 +1,115 @@
 <template>
     <MainLayout>
-        <!-- HERE US WHERE WE CALL THE TITLE OF THE ARTICLE -->
-        <div class="container mx-auto text-center font-bold text-white text-3xl p-2 bg-slate-500">
+
+        <div
+            class="container mx-auto text-center font-bold text-white text-3xl p-2 bg-slate-500"
+        >
             <p>{{ article.title }}</p>
         </div>
 
-        <!-- HERE IS WHERE THE ARTICLES IMAGE IS CALLED -->
         <div class="container mx-auto flex justify-center">
-            <!-- <img :src="article.filename_image" /> -->
-            <img v-if="article.filename_image != null" :src="'/images/'+article.filename_image"/>
-            <img v-else src="/images/default.webp" />
 
+            <img
+                v-if="article.filename_image != null"
+                :src="'/images/' + article.filename_image"
+            />
+            <img v-else src="/images/default.webp" />
         </div>
 
-        <!-- HERE IS WERE THE ARTICLES TEXT IS CALLED -->
-        <div class="container mx-auto first-letter:text-7xl first-line:uppercase first-letter:font-bold text-left text-white bg-slate-500 " >
+        <div
+            class="container mx-auto first-letter:text-7xl first-line:uppercase first-letter:font-bold text-left text-white bg-slate-500"
+        >
             <div>
                 {{ article.content }}
-                <!-- HERE IS WERE THE ARTICLES DATE AND WRITER IS CALLED OR WRITTEN  -->
-                <div class="mx-auto text-center font-bold text-white text-1xl bg-sky-400">
-                    {{ article.created_at_human }} | Created by {{ article.author }}
+
+                <div
+                    class="mx-auto text-center font-bold text-white text-1xl bg-sky-400"
+                >
+                    {{ article.created_at_human }} | Created by
+                    {{ article.author }}
                 </div>
-
             </div>
-
         </div>
-        <!-- HERE IS WERE PEOPLE CAN LIKE OR DISLIKE THE ARTICLE -->
-        <div class="columns-2 text-center content-start rounded  mx-auto p-3 m-5 bg-sky-400" >
 
-            <div class="font-bold text-center text-white ">
+        <div
+            class="columns-2 text-center content-start rounded mx-auto p-3 m-5 bg-sky-400"
+        >
+            <div class="font-bold text-center text-white">
                 169
                 <button
-                    class="text-center font-bold bg-sky-700 rounded mx-auto p-2 g-sky-600 hover:bg-sky-900 text-white">
-
-
+                    class="text-center font-bold bg-sky-700 rounded mx-auto p-2 g-sky-600 hover:bg-sky-900 text-white"
+                >
                     &#128077;
-
                 </button>
             </div>
 
-            <div class="font-bold text-center text-white ">
-
+            <div class="font-bold text-center text-white">
                 68
                 <button
-                    class="text-center font-bold bg-sky-700 rounded mx-auto p-2 g-sky-600 hover:bg-sky-900 text-white">
-
+                    class="text-center font-bold bg-sky-700 rounded mx-auto p-2 g-sky-600 hover:bg-sky-900 text-white"
+                >
                     &#128078;
-
                 </button>
-
             </div>
         </div>
 
+        <div v-if="$page.props.user">
+            <div class="mx-auto text-center font-bold p-2">
+                <p>LEAVE A COMMENT</p>
+            </div>
 
-        <div class="mx-auto text-center font-bold p-2">
-            <p>LEAVE A COMMENT</p>
-        </div>
 
-        <!-- HERE IS WERE REGISTERED USERS CAN LEAVE AND SUBMIT THEIR COMMENTS-->
             <div class="mx-auto text-center">
-                <textarea v-model="comment" class="shadow rounded stroke-[2px]" rows="7" cols="40" name="content" placeholder="write here"> </textarea>
+                <textarea
+                    v-model="comment"
+                    class="shadow rounded stroke-[2px]"
+                    rows="7"
+                    cols="40"
+                    name="content"
+                    placeholder="write here"
+                >
+                </textarea>
 
-                <!-- show validation warning -->
-                <div class="text-red-600" v-if="$page.props.errors.content">Please enter a comment</div>
+                <div class="text-red-600" v-if="$page.props.errors.content">
+                    Please enter a comment
+                </div>
             </div>
 
-           <button @click="createCommentForm.post(`/articles/${article.id}/comments`, {})" class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white">
-                  SUBMIT
+            <button
+                @click="
+                    createCommentForm.post(
+                        `/articles/${article.id}/comments`,
+                        {}
+                    )
+                "
+                class="text-center font-bold bg-teal-600 rounded mx-auto p-2 g-sky-600 hover:bg-sky-700 text-white"
+            >
+                SUBMIT
             </button>
-
-
+        </div>
 
         <div class="mx-auto text-center font-bold m-5">
             <p>COMMENTS</p>
         </div>
 
-        <!-- HERE IS WERE COMMENTS ARE POST SO PEOPLE CAN READ THEM-->
-
-        <div class="container text-center p-2 rounded mx-auto display" >
+        <div class="container text-center p-2 rounded mx-auto display">
             <div class="text-center">
                 <div
-                    class="text-center p-2 rounded drop-shadow-xl m-3  bg-sky-400 text-white inline-flex">
-                    I think this is absolutely amazing I did not know that my cat
-                    could be inside the Matrix as a Djavu. But yes, believe me, If I were Neo
-                    I would not leave alone Trinity.
-
-                     I think this is absolutely amazing I did not know that my cat
-                    could be inside the Matrix as a Djavu. But yes, believe me, If I were Neo
-                    I would not leave alone Trinity.
-
+                    class="text-center p-2 rounded drop-shadow-xl m-3 bg-sky-400 text-white inline-flex"
+                >
+                    I think this is absolutely amazing I did not know that my
+                    cat could be inside the Matrix as a Djavu. But yes, believe
+                    me, If I were Neo I would not leave alone Trinity. I think
+                    this is absolutely amazing I did not know that my cat could
+                    be inside the Matrix as a Djavu. But yes, believe me, If I
+                    were Neo I would not leave alone Trinity.
                 </div>
-
-
             </div>
 
             <div class="text-center">
                 <div
-                    class="text-center p-2 rounded drop-shadow-xl m-3  bg-sky-400 text-white inline-flex">
+                    class="text-center p-2 rounded drop-shadow-xl m-3 bg-sky-400 text-white inline-flex"
+                >
                     Vamonos!!! I do really want my cyber cat also, but, is it
                     possible to accquire one in United Stares?
                 </div>
@@ -104,8 +117,8 @@
 
             <div class="text-center">
                 <div
-                    class="text-center p-2 rounded drop-shadow-xl m-3  bg-sky-400 text-white inline-flex ">
-
+                    class="text-center p-2 rounded drop-shadow-xl m-3 bg-sky-400 text-white inline-flex"
+                >
                     This is something I need to discuse with my parrot :/
                 </div>
             </div>
@@ -123,7 +136,7 @@ import { useForm, usePage } from "@inertiajs/inertia-vue3";
 import { computed } from "@vue/reactivity";
 import { ref } from "vue";
 
-const comment = ref('');
-const createCommentForm = useForm({ 'content': comment });
+const comment = ref("");
+const createCommentForm = useForm({ content: comment });
 const article = computed(() => usePage().props.value.article);
 </script>
