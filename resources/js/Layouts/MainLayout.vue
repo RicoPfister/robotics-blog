@@ -1,6 +1,9 @@
 <template>
     <JetBanner />
     <div class="flex flex-col h-screen">
+    
+        <div class="flex flex-col h-96 bg-[#ffffff]">
+=======
         <header class="flex flex-col justify-end bg-[#ffffff]">
             <div v-if="showRegLog()" class="absolute top-1 right-1 flex">
                 <div v-if="loggedIn()" class="flex gap-5">
@@ -58,6 +61,27 @@
 
             <img :src="MyLogo" class="w-72 my-2 mx-auto" />
 
+            <nav class=" flex justify-evenly p-10 font-bold text-white mt-[10px] h-24 bg-[#5fc6d8]">
+                <Link href="/">HOME</Link>
+                <Link :href="route('articles.index', {category : 'entertainment'})">ENTERTAINMENT</Link>
+                <Link :href="route('articles.index', {category : 'robots'})">ROBOTS</Link>
+                <Link :href="route('articles.index', {category : 'industry'})">INDUSRTY</Link>
+                <Link :href="route('articles.index', {category : 'medical'})">MEDICAL</Link>
+           </nav>
+        </div>
+
+        <slot></slot>
+
+<!-- sm:flex sm:items-center sm:justify-between -->
+
+        <div class=" sm:flex sm:items justify-evenly p-5 mt-5 h-24 font-bold bg-[#b79fff] text-white">
+            <img :src="MyLogo2" class="h-10 mx-[10px] mt-2" />
+            <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap px-6 dark:text-white"></span> -->
+
+            <Link :href="route('terms.show')" class="text-center mt-4">TERMS OF SERVICES</Link>
+            <Link :href="route('policy.show')" class="text-center mt-4">PRIVACY POLICY</Link>
+            <Link href="/impressum" class="text-center mt-4">IMPRESSUM</Link>
+=======
             <nav
                 class="flex justify-evenly p-10 text-white mt-[10px] h-24 bg-[#5fc6d8]"
             >
@@ -101,6 +125,7 @@
                 >PRIVACY POLICY</Link
             >
             <Link :href="route('impressum')" class="mr-[100px]">IMPRESSUM</Link>
+
         </div>
     </div>
 </template>
