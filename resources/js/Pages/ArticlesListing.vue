@@ -3,15 +3,8 @@
         <div class="container mx-auto columns-1">
             <div class="text-black text-2xl text-center mt-10 mb-10">
                 CATEGORY/SECTION NAME
-            </div>
-            <ArticleBrief image-left="true"></ArticleBrief>
-            <ArticleBrief></ArticleBrief>
-            <ArticleBrief image-left="true"></ArticleBrief>
-            <ArticleBrief></ArticleBrief>
-            <ArticleBrief image-left="true"></ArticleBrief>
-            <ArticleBrief></ArticleBrief>
-            <ArticleBrief image-left="true"></ArticleBrief>
-            <ArticleBrief></ArticleBrief>
+        </div>
+            <ArticleBrief v-for="(article, index) in articles" :key="index" :article="article" :index="index"></ArticleBrief>
         </div>
 
     </MainLayout>
@@ -22,4 +15,9 @@ import MainLayout from "@/Layouts/MainLayout.vue";
 import MyImage from "@/../images/botblog-logo-2.png";
 import MyLike from "@/../images/like.png";
 import ArticleBrief from "../Components/ArticleBrief.vue";
+
+import { usePage } from "@inertiajs/inertia-vue3";
+import { computed } from "@vue/reactivity";
+
+const articles = computed(() => usePage().props.value.articles);
 </script>
