@@ -58,12 +58,14 @@
                 </div>
             </div>
 
+            <img :src="MyLogo" class="w-72 my-2 mx-auto" />
+
             <nav class=" flex justify-evenly p-10 text-white mt-[10px] h-24 bg-[#5fc6d8]">
                 <Link href="/">HOME</Link>
-                <Link :href="route('articles.index', {category : 'ENTERTAINMENT'})">entertainment</Link>
-                <Link :href="route('articles.index', {category : 'ROBOTS'})">robotics</Link>
-                <Link :href="route('articles.index', {category : 'INDUSRTY'})">industry</Link>
-                <Link :href="route('articles.index', {category : 'MEDICAL'})">medical</Link>
+                <Link :href="route('articles.index', {category : 'entertainment'})">ENTERTAINMENT</Link>
+                <Link :href="route('articles.index', {category : 'robots'})">ROBOTS</Link>
+                <Link :href="route('articles.index', {category : 'industry'})">INDUSRTY</Link>
+                <Link :href="route('articles.index', {category : 'medical'})">MEDICAL</Link>
            </nav>
         </div>
 
