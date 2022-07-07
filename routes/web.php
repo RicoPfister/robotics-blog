@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CommentsController;
+use App\Models\Article;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,9 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'article' => Article::all()->random(3)
     ]);
 })->name('home');
-
 Route::resource('articles', ArticlesController::class);
 Route::resource('articles.comments', CommentsController::class);
 // Route::resource('articles.likes', LikesController::class);
