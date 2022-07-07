@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\User;
 use Redirect;
 use Auth;
@@ -18,8 +19,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Article::all()->where('category', '=' ,request()->category)->values();
-
+        $articles = Article::all()->where('category', '=' , request()->category)->values();
         return Inertia::render('ArticlesListing', ['articles' => $articles]);
     }
 
@@ -66,7 +66,10 @@ class ArticlesController extends Controller
     {
         $article->author = User::all()->where('id', '=', $article->user_id)->pluck('name')->first();
         $article->created_at_human = $article->created_at->diffForHumans();
-        return Inertia::render('ArticleDetails', ['article' => $article]);
+
+        $comment = Comment::all()->where('article_id', '=', $article->id);
+
+        return Inertia::render('ArticleDetails', ['article' => $article, 'commentUser' => $comment]);
     }
 
     /**

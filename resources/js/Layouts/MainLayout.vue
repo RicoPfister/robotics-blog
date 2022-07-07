@@ -68,14 +68,63 @@
                 <Link :href="route('articles.index', {category : 'medical'})">MEDICAL</Link>
            </nav>
         </div>
+    </div>
 
         <slot></slot>
 
 <!-- sm:flex sm:items-center sm:justify-between -->
 
-        <div class=" sm:flex sm:items justify-between p-5 mt-5 h-24 bg-[#b79fff] text-white">
-                <img :src="MyLogo2" class=" w-12 h-15" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap px-6 dark:text-white"></span>
+        <div class=" sm:flex sm:items justify-evenly p-5 mt-5 h-24 font-bold bg-[#b79fff] text-white">
+            <img :src="MyLogo2" class="h-10 mx-[10px] mt-2" />
+            <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap px-6 dark:text-white"></span> -->
+
+            <Link :href="route('terms.show')" class="text-center mt-4">TERMS OF SERVICES</Link>
+            <Link :href="route('policy.show')" class="text-center mt-4">PRIVACY POLICY</Link>
+            <Link href="/impressum" class="text-center mt-4">IMPRESSUM</Link>
+
+            <nav
+                class="flex justify-evenly p-10 text-white mt-[10px] h-24 bg-[#5fc6d8]"
+            >
+                <Link :href="route('home')">HOME</Link>
+                <Link
+                    :href="
+                        route('articles.index', {
+                            category: 'entertainment',
+                        })
+                    "
+                    >ENTERTAINMENT</Link
+                >
+                <Link :href="route('articles.index', { category: 'robotics' })"
+                    >ROBOTICS</Link
+                >
+                <Link :href="route('articles.index', { category: 'industry' })"
+                    >INDUSTRY</Link
+                >
+                <Link :href="route('articles.index', { category: 'medical' })"
+                    >MEDICAL</Link
+                >
+            </nav>
+
+
+        <slot></slot>
+
+        <!-- sm:flex sm:items-center sm:justify-between -->
+
+        <div
+            class="flex justify-between items-center p-5 mt-auto h-24 bg-[#b79fff] text-white"
+        >
+            <img :src="MyLogo2" class="h-16" />
+            <span
+                class="self-center text-2xl font-semibold whitespace-nowrap px-6 dark:text-white"
+            ></span>
+
+            <Link :href="route('terms.show')" class="mr-10"
+                >TERMS OF SERVICES</Link
+            >
+            <Link :href="route('policy.show')" class="mr-[100px]"
+                >PRIVACY POLICY</Link
+            >
+            <Link :href="route('impressum')" class="mr-[100px]">IMPRESSUM</Link>
 
             <Link :href="route('terms.show')" class="mr-10">TERMS OF SERVICES</Link>
             <Link :href="route('policy.show')" class=" mr-[100px] ">PRIVACY POLICY</Link>

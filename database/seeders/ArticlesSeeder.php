@@ -48,7 +48,7 @@ class ArticlesSeeder extends Seeder
 
         DB::table('articles')->insert([
             "category" => "entertainment",
-            "title" => "Article 9000",
+            "title" => "Article 4",
             "short" => "This is short of article 3.",
             "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             "user_id" => 2,
@@ -58,7 +58,7 @@ class ArticlesSeeder extends Seeder
 
         DB::table('articles')->insert([
             "category" => "robotics",
-            "title" => "Article 277",
+            "title" => "Article 5",
             "short" => "This is short of article 3.",
             "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             "user_id" => 2,
@@ -68,32 +68,34 @@ class ArticlesSeeder extends Seeder
 
         DB::table('articles')->insert([
             "category" => "robotics",
-            "title" => "Article 55",
+            "title" => "Article 6",
             "short" => "This is short of article 3.",
             "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             "user_id" => 2,
             'created_at' => '2022-06-27 07:51:03',
-            "filename_image" => "image3.png"
+            "filename_image" => "image2.png"
         ]);
 
         DB::table('articles')->insert([
             "category" => "robotics",
-            "title" => "Article 54",
+            "title" => "Article 7",
             "short" => "This is short of article 3.",
             "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             "user_id" => 2,
             'created_at' => '2022-06-27 07:51:03',
-            "filename_image" => "image3.png"
+            "filename_image" => "image1.png"
         ]);
 
         DB::table('articles')->insert([
             "category" => "robotics",
-            "title" => "Article 189",
+            "title" => "Article 8",
             "short" => "This is short of article 3.",
             "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             "user_id" => 2,
             'created_at' => '2022-06-27 07:51:03',
-            "filename_image" => "image3.png"
+            "filename_image" => "image2.png"
         ]);
+
+
     }
 }
