@@ -1,10 +1,7 @@
 <template>
     <JetBanner />
     <div class="flex flex-col h-screen">
-    
-        <div class="flex flex-col h-96 bg-[#ffffff]">
-=======
-        <header class="flex flex-col justify-end bg-[#ffffff]">
+        <div class="flex flex-col justify-end h-96 bg-[#ffffff]">
             <div v-if="showRegLog()" class="absolute top-1 right-1 flex">
                 <div v-if="loggedIn()" class="flex gap-5">
                     <JetDropdown align="right" width="48">
@@ -13,6 +10,7 @@
                                 {{ usePage().props.value.user.name }}
                             </div>
                         </template>
+
 
                         <template #content>
                             <!-- Account Management -->
@@ -42,17 +40,18 @@
                     </JetDropdown>
                 </div>
 
-                <div v-else class="flex gap-5 p-3">
+
+                <div v-else class="flex">
                     <Link
                         :href="route('register')"
-                        class="hover:bg-orange-100 rounded-lg w-16"
+                        class=" mx-8 hover:bg-orange-100 rounded-lg w-16 mt-[190px]"
                     >
                         Register
                     </Link>
 
                     <Link
                         :href="route('login')"
-                        class="hover:bg-yellow-100 rounded-lg w-14"
+                        class=" mx-8 hover:bg-yellow-100 rounded-lg w-14 mt-[190px]"
                     >
                         Log-in
                     </Link>
@@ -61,10 +60,10 @@
 
             <img :src="MyLogo" class="w-72 my-2 mx-auto" />
 
-            <nav class=" flex justify-evenly p-10 font-bold text-white mt-[10px] h-24 bg-[#5fc6d8]">
+            <nav class=" flex justify-evenly p-10 text-white mt-[10px] h-24 bg-[#5fc6d8]">
                 <Link href="/">HOME</Link>
                 <Link :href="route('articles.index', {category : 'entertainment'})">ENTERTAINMENT</Link>
-                <Link :href="route('articles.index', {category : 'robots'})">ROBOTS</Link>
+                <Link :href="route('articles.index', {category : 'robotics'})">ROBOTICS</Link>
                 <Link :href="route('articles.index', {category : 'industry'})">INDUSRTY</Link>
                 <Link :href="route('articles.index', {category : 'medical'})">MEDICAL</Link>
            </nav>
@@ -74,58 +73,13 @@
 
 <!-- sm:flex sm:items-center sm:justify-between -->
 
-        <div class=" sm:flex sm:items justify-evenly p-5 mt-5 h-24 font-bold bg-[#b79fff] text-white">
-            <img :src="MyLogo2" class="h-10 mx-[10px] mt-2" />
-            <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap px-6 dark:text-white"></span> -->
+        <div class=" sm:flex sm:items justify-between p-5 mt-5 h-24 bg-[#b79fff] text-white">
+                <img :src="MyLogo2" class=" w-12 h-15" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap px-6 dark:text-white"></span>
 
-            <Link :href="route('terms.show')" class="text-center mt-4">TERMS OF SERVICES</Link>
-            <Link :href="route('policy.show')" class="text-center mt-4">PRIVACY POLICY</Link>
-            <Link href="/impressum" class="text-center mt-4">IMPRESSUM</Link>
-=======
-            <nav
-                class="flex justify-evenly p-10 text-white mt-[10px] h-24 bg-[#5fc6d8]"
-            >
-                <Link :href="route('home')">HOME</Link>
-                <Link
-                    :href="
-                        route('articles.index', {
-                            category: 'entertainment',
-                        })
-                    "
-                    >ENTERTAINMENT</Link
-                >
-                <Link :href="route('articles.index', { category: 'robotics' })"
-                    >ROBOTICS</Link
-                >
-                <Link :href="route('articles.index', { category: 'industry' })"
-                    >INDUSRTY</Link
-                >
-                <Link :href="route('articles.index', { category: 'medical' })"
-                    >MEDICAL</Link
-                >
-            </nav>
-        </header>
-
-        <slot></slot>
-
-        <!-- sm:flex sm:items-center sm:justify-between -->
-
-        <div
-            class="flex justify-between items-center p-5 mt-auto h-24 bg-[#b79fff] text-white"
-        >
-            <img :src="MyLogo2" class="h-16" />
-            <span
-                class="self-center text-2xl font-semibold whitespace-nowrap px-6 dark:text-white"
-            ></span>
-
-            <Link :href="route('terms.show')" class="mr-10"
-                >TERMS OF SERVICES</Link
-            >
-            <Link :href="route('policy.show')" class="mr-[100px]"
-                >PRIVACY POLICY</Link
-            >
-            <Link :href="route('impressum')" class="mr-[100px]">IMPRESSUM</Link>
-
+            <Link :href="route('terms.show')" class="mr-10">TERMS OF SERVICES</Link>
+            <Link :href="route('policy.show')" class=" mr-[100px] ">PRIVACY POLICY</Link>
+            <Link href="/impressum" class=" mr-[100px] ">IMPRESSUM</Link>
         </div>
     </div>
 </template>
@@ -138,7 +92,7 @@ import { Inertia } from "@inertiajs/inertia";
 import MyLogo from "@/../images/botblog-logo-1.png";
 import MyLogo2 from "@/../images/botblog-logo-2.png";
 
-import JetBanner from "@/Jetstream/Banner.vue";
+import JetBanner from '@/Jetstream/Banner.vue';
 
 const logout = () => {
     Inertia.post(route("logout"));
